@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'httparty'
+require 'json'
 
 class TranslationService
   BASE_URL = 'https://api.funtranslations.com/translate'
@@ -13,7 +14,10 @@ class TranslationService
 
     return text unless response.success?
 
-    response.parsed_response.dig('contents', 'translated') || text
+    data = response.parsed_response
+    data = JSON.parse(data) if data.is_a?(String)
+
+    data.dig('contents', 'translated') || text
   rescue StandardError
     text
   end

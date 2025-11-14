@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'httparty'
+require 'json'
 
 class PokemonService
   BASE_URL = 'https://pokeapi.co/api/v2'
@@ -11,6 +12,7 @@ class PokemonService
     return nil unless response.success?
 
     data = response.parsed_response
+    data = JSON.parse(data) if data.is_a?(String)
 
     {
       name: data['name'],
