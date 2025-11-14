@@ -1,0 +1,26 @@
+# Ruby
+*.gem
+*.rbc
+.bundle
+.config
+vendor/bundle
+.ruby-version
+.ruby-gemset
+
+# RSpec
+.rspec_status
+coverage/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
